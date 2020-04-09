@@ -1,13 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'mobx-react';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+import WeatherModel from './Models/WeatherModel';
+
+const weatherStore = new WeatherModel();
 
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider weatherStore={weatherStore}>
     <App />
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById('root')
 );
 
