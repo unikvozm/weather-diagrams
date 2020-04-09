@@ -8,13 +8,12 @@ export class WeatherController {
 
   async getWeatherForecast(queries) {
 	const { lat, long, lang } = queries;
-	console.log(lat, long, lang);
     const url = `${this.proxy}${this.baseUrl}${WEATHER_TOKEN}/${lat},${long}?exclude=minutely,hourly,flags&lang=${lang}&units=si`;
 
     try {
       const req = await fetch(url);
       const data = await req.json();
-      console.log(data);
+      return data;
     } catch (err) {
       throw new Error(err);
     }

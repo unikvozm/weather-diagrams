@@ -1,30 +1,45 @@
+import CanvasJSReact from "../canvasjs.react";
 import React from "react";
-import { observer } from 'mobx-react';
 
-@observer
-class WeatherChart extends React.Component {
-  componentDidMount() {
-    const { weatherStore } = this.props;
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((pos) => {
-		  console.log(pos);
-        weatherStore.longitude = pos.coords.longitude;
-        weatherStore.latitude = pos.coords.latitude;
-        weatherStore.getWeather();
-      });
-    }
-  }
+var CanvasJSChart = CanvasJSReact.CanvasJSChart;
+
+export default class WeatherChart extends React.Component {
   render() {
-	const { weatherStore } = this.props;
+    const {min, max} = this.props;
+    const options = {
+      animationEnabled: true,
+      exportEnabled: true,
+      title: {
+        text: "The Temperature Forecast for the next 8 days",
+      },
+      axisY: {
+        title: "Temperature in C",
+        includeZero: false,
+      },
+      toolTip: {
+        shared: true,
+      },
+      data: [
+        {
+          type: "spline",
+          name: "max Temperature",
+          showInLegend: true,
+          dataPoints: max,
+        },
+        {
+          type: "spline",
+          name: "min Temperature",
+          showInLegend: true,
+          dataPoints: min,
+        },
+      ],
+    };
     return (
-    <div>
-      <ul>
-        <li>longitude: {weatherStore.longitude}</li>
-        <li>latitude: {weatherStore.latitude}</li>
-      </ul>	
-    </div>
+      <div>
+        <CanvasJSChart
+          options={options}
+        />
+      </div>
     );
   }
 }
-
-export default WeatherChart;

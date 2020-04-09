@@ -1,5 +1,5 @@
 import React from "react";
-import WeatherChart from "./Components/WeatherChart";
+import WeatherPresenter from "./Presenters/WeatherPresenter";
 import "./App.css";
 import { inject, observer } from "mobx-react";
 
@@ -10,7 +10,7 @@ class App extends React.Component {
     const { weatherStore } = this.props;
     return (
       <div className="App">
-        <WeatherChart weatherStore={weatherStore} />
+        <WeatherPresenter weatherStore={weatherStore} />
       </div>
     );
   }
