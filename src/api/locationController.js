@@ -1,6 +1,6 @@
 const GEOCODER_TOKEN = "cdb1e310abc5419f88c96b50bb013ea1";
 
-export default class WeatherController {
+export default class LocationController {
   constructor() {
     this.baseUrl = "https://api.opencagedata.com/geocode/v1/json";
     this.proxy = "https://cors-anywhere.herokuapp.com/";
@@ -13,7 +13,7 @@ export default class WeatherController {
     try {
       const req = await fetch(url);
       const data = await req.json();
-      return data.results[0];
+      return data.results[0].components;
     } catch (err) {
       alert("Something went wrong");
       throw new Error(err);

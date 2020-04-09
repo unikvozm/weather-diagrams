@@ -5,12 +5,12 @@ var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 export default class WeatherChart extends React.Component {
   render() {
-    const {min, max} = this.props;
+    const { min, max, city, country } = this.props;
     const options = {
       animationEnabled: true,
       exportEnabled: true,
       title: {
-        text: "The Temperature Forecast for this week",
+        text: `The Temperature Forecast for this week in ${city}, ${country}`,
       },
       axisY: {
         title: "Temperature in °C",

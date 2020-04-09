@@ -1,6 +1,6 @@
 const WEATHER_TOKEN = "b09c5fb76da37a975c47e9a40842e089";
 
-export class WeatherController {
+export default class WeatherController {
   constructor() {
     this.baseUrl = "https://api.darksky.net/forecast/";
     this.proxy = "https://cors-anywhere.herokuapp.com/";
