@@ -1,6 +1,7 @@
 import React from "react";
 import { observer } from 'mobx-react';
 import WeatherChart from '../Components/WeatherChart';
+import {normCoords} from '../utils/normilizeCoordinates';
 
 @observer
 class WeatherPresenter extends React.Component {
@@ -11,7 +12,6 @@ class WeatherPresenter extends React.Component {
         weatherStore.longitude = pos.coords.longitude;
         weatherStore.latitude = pos.coords.latitude;
         weatherStore.getWeather();
-        console.log(weatherStore.weatherData)
       });
     }
   }
@@ -20,8 +20,8 @@ class WeatherPresenter extends React.Component {
     return (
     <div>
       <ul>
-        <li>longitude: {weatherStore.longitude}</li>
-        <li>latitude: {weatherStore.latitude}</li>
+        <li>longitude: {normCoords(weatherStore.longitude)}</li>
+        <li>latitude: {normCoords(weatherStore.latitude)}</li>
       </ul>	
       <WeatherChart min={weatherStore.minTemperatures} max={weatherStore.maxTemperatures}/>
     </div>

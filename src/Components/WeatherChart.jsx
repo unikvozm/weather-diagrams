@@ -10,10 +10,10 @@ export default class WeatherChart extends React.Component {
       animationEnabled: true,
       exportEnabled: true,
       title: {
-        text: "The Temperature Forecast for the next 8 days",
+        text: "The Temperature Forecast for this week",
       },
       axisY: {
-        title: "Temperature in C",
+        title: "Temperature in °C",
         includeZero: false,
       },
       toolTip: {
