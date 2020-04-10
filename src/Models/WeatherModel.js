@@ -24,7 +24,7 @@ export default class WeatherModel {
       long: this.longitude,
     };
     const weatherData = await weatherController.getWeatherForecast(queries);
-    if (weatherData.daily) {
+    if (weatherData) {
       this.weatherInfo = weatherData.daily.data.map((day) => {
         return {
           min: day.temperatureLow,
@@ -38,11 +38,10 @@ export default class WeatherModel {
         day.time = convertTimeInDay(
           new Date(timeNow + index * 86400000), // 1000 ms/s * 60 s/min * 60 min/h * 24 h/day
           this.timeZone
-        ); 
+        );
       });
       this.getMaxTemperatures();
       this.getMinTemperatures();
-      this.getLocationByCoords();
     }
   }
 
@@ -66,12 +65,32 @@ export default class WeatherModel {
     const locationData = await locationController.getLocationDataFromCoords(
       queries
     );
-    this.country = locationData.country;
-    this.city =
-      locationData.city ||
-      locationData.town ||
-      locationData.village ||
-      locationData.county ||
-      locationData.state;
+    if (locationData) {
+      this.country = locationData.country;
+      this.city =
+        locationData.city ||
+        locationData.town ||
+        locationData.village ||
+        locationData.county ||
+        locationData.state;
+    }
+  }
+
+  @action async updateLocation() {
+    const locationData = await locationController.getLocationDataFromInput(
+      this.newPlace
+    );
+    if (locationData) {
+      this.latitude = locationData.geometry.lat;
+      this.longitude = locationData.geometry.lng;
+      this.country = locationData.components.country;
+      this.city =
+        locationData.components.city ||
+        locationData.components.town ||
+        locationData.components.village ||
+        locationData.components.county ||
+        locationData.components.state;
+      this.getWeather();
+    }
   }
 }

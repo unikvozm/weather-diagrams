@@ -21,16 +21,16 @@ export default class LocationController {
   }
 
   async getLocationDataFromInput(input) {
-	const cityToSearch = input.replace(' ', '%20');
-	const url = `${this.baseUrl}?q=${cityToSearch}&key=${GEOCODER_TOKEN}&language=en&pretty=1`;
-	
-	try {
-		const req = await fetch(url);
-		const data = await req.json();
-		return data.results[0];
-	  } catch (err) {
-		alert("Something went wrong");
-		throw new Error(err);
-	  }
+    const cityToSearch = input.replace(" ", "%20");
+    const url = `${this.baseUrl}?q=${cityToSearch}&key=${GEOCODER_TOKEN}&language=en&pretty=1`;
+
+    try {
+      const req = await fetch(url);
+      const data = await req.json();
+      return data.results[0];
+    } catch (err) {
+      alert("Something went wrong");
+      throw new Error(err);
+    }
   }
 }
