@@ -3,7 +3,7 @@ import React from "react";
 
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
-export default class WeatherChart extends React.Component {
+export default class TemperatureChart extends React.Component {
   render() {
     const { min, max, city, country } = this.props;
     const options = {

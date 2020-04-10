@@ -13,6 +13,7 @@ export default class WeatherModel {
   @observable longitude = 0;
   @observable minTemperatures = [];
   @observable maxTemperatures = [];
+  @observable winds = [];
   @observable timeZone;
   @observable country = "";
   @observable city = "";
@@ -41,7 +42,8 @@ export default class WeatherModel {
         );
       });
       this.getMaxTemperatures();
-      this.getMinTemperatures();
+	  this.getMinTemperatures();
+	  this.getWinds();
     }
   }
 
@@ -55,6 +57,13 @@ export default class WeatherModel {
     this.maxTemperatures = this.weatherInfo.map((day) => {
       return { y: day.max, label: day.time };
     });
+  }
+
+  @action getWinds() {
+    this.winds = this.weatherInfo.map((day, index) => {
+      return { x: index, y: day.windSpeed };
+	});
+	console.log(this.winds);
   }
 
   @action async getLocationByCoords() {
