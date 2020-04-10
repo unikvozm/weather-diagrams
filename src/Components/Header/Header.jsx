@@ -5,8 +5,6 @@ import Switch from './Switch';
 import { normCoords } from '../../utils/normilizeCoordinates';
 import './Header.scss';
 
-const locationMessage = "Please, allow to read your coordinates. Your data is not stored and only used for showing the weather in your location";
-
 const navigationList = (weatherStore, theme, listClassName = '', elementClassName = '') => (
   <ul className={listClassName}>
     <li className={elementClassName}>Longitude: {normCoords(weatherStore.longitude)}</li>
@@ -18,20 +16,6 @@ const navigationList = (weatherStore, theme, listClassName = '', elementClassNam
 
 @observer
 class Header extends React.Component {
-  componentDidMount() {
-    const { weatherStore } = this.props;
-    if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition((pos) => {
-        weatherStore.longitude = pos.coords.longitude;
-        weatherStore.latitude = pos.coords.latitude;
-      }, (err) => {
-        alert(locationMessage)
-      });
-    } else {
-      alert(locationMessage)
-    }
-  }
-
   render() {
     const { weatherStore, theme } = this.props;
     return (
