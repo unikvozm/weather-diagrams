@@ -1,0 +1,162 @@
+@import "../../Constants/global_variables.scss";
+
+.header {
+  color: white;
+  background: $dark-background;
+  height: 60px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 16px;
+  line-height: 24px;
+  border-bottom: 1px solid $color-grey-2;
+
+  ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  li {
+    display: inline;
+    margin-left: 18px;
+    margin-right: 18px;
+    cursor: pointer;
+    text-transform: uppercase;
+  }
+
+  &__logo {
+    font-family: $ff-ow;
+    padding: 0 10px;
+    background: $color-grey-1;
+    font-weight: 500;
+    font-size: 21px;
+    line-height: 31px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .hamburger-menu {
+    display: none;
+  }
+
+  #menu__toggle {
+    opacity: 0;
+    height: 0;
+    width: 0;
+
+    &:checked ~ .menu__btn > span {
+      transform: rotate(45deg);
+
+      &::before {
+        top: 0;
+        transform: rotate(0);
+      }
+
+      &::after {
+        top: 0;
+        transform: rotate(90deg);
+      }
+    }
+
+    &:checked ~ .menu__box {
+      visibility: visible;
+      left: 0;
+      z-index: 1;
+    }
+  }
+
+  .menu__btn {
+    display: flex;
+    align-items: center;
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+    margin: 0;
+    position: relative;
+    z-index: 2;
+
+    & > span,
+    & > span::before,
+    & > span::after {
+      display: block;
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background-color: $dark-color;
+      transition-duration: 0.25s;
+    }
+
+    & > span::before {
+      content: "";
+      top: -8px;
+    }
+
+    & > span::after {
+      content: "";
+      top: 8px;
+    }
+  }
+
+  .menu__box {
+    display: block;
+    position: fixed;
+    visibility: hidden;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 80px 0;
+    list-style: none;
+    background-color: $dark-background;
+    box-shadow: 1px 0px 6px rgba(0, 0, 0, 0.2);
+    transition-duration: 0.25s;
+  }
+
+  .menu__item {
+    display: block;
+    padding: 12px 24px;
+    color: $dark-color;
+    font-size: 20px;
+    font-weight: 600;
+    text-decoration: none;
+    transition-duration: 0.25s;
+  }
+
+  #search-input {
+    padding: 5px 11px;
+    font-size: 16px;
+    font-family: $ff-ow;
+    color: white;
+    background-color: $color-grey-1;
+    border: none;
+    text-transform: uppercase;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.15);
+  }
+
+  @media all and (max-width: 860px) {
+    .hamburger-menu {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: $header-menu-background;
+      width: 60px;
+    }
+
+    .header__logo {
+      justify-content: start;
+      padding-left: 18px;
+      background: $dark-background;
+    }
+
+    ul {
+      display: none;
+    }
+  }
+}

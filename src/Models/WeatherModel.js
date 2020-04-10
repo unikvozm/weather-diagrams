@@ -15,8 +15,8 @@ export default class WeatherModel {
   @observable maxTemperatures = [];
   @observable winds = [];
   @observable timeZone;
-  @observable country = "";
-  @observable city = "";
+  @observable country = "Gulf";
+  @observable city = "Guinea";
   @observable newPlace = "";
   @observable overalls = [];
 

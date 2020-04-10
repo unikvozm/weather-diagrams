@@ -1,0 +1,61 @@
+@import "../../Constants/global_variables.scss";
+
+.theme-switch {
+  display: inline-block;
+  height: 25px;
+  position: relative;
+  width: 50px;
+  margin-bottom: 0;
+
+  &-wrapper {
+    display: flex;
+    align-items: center;
+  
+    em {
+      margin-left: 10px;
+      font-size: 1rem;
+    }
+  }
+
+  & input {
+    display:none;
+  }
+}
+
+.slider {
+  background-color: #ccc;
+  bottom: 0;
+  cursor: pointer;
+  left: 0;
+  position: absolute;
+  right: 0;
+  top: 0;
+  transition: .4s;
+
+  &:before {
+    background-color: #fff;
+    bottom: 1px;
+    content: "";
+    height: 23px;
+    left: 1px;
+    position: absolute;
+    transition: .4s;
+    width: 23px;
+  }
+}
+
+input:checked + .slider {
+  background-color: $active-element;
+}
+
+input:checked + .slider:before {
+  transform: translateX(26px);
+}
+
+.slider.round {
+  border-radius: 34px;
+
+  &:before {
+    border-radius: 50%;
+  }
+}

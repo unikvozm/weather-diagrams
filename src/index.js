@@ -5,11 +5,18 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import WeatherModel from './Models/WeatherModel';
+import ThemeModel from './Models/ThemeModel';
 
 const weatherStore = new WeatherModel();
+const themeStore = new ThemeModel();
+
+const stores = {
+  weatherStore,
+  themeStore
+}
 
 ReactDOM.render(
-  <Provider weatherStore={weatherStore}>
+  <Provider {...stores} >
     <App />
   </Provider>,
   document.getElementById('root')

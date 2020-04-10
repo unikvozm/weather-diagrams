@@ -1,0 +1,23 @@
+@font-face {
+  font-family: "Oswald Regular";
+  src: url(./font-oswald/oswald-regular.eot);
+  src: url(./font-oswald/oswald-regular.eot?#iefix) format("embedded-opentype"),
+    url(./font-oswald/oswald-regular.woff) format("woff"),
+    url(./font-oswald/oswald-regular.ttf) format("truetype"),
+    url(./font-oswald/oswald-regular.svg) format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Source Sans Pro Regular";
+  src: url(./font-sourcesanspro/sourcesanspro-regular.eot);
+  src: url(./font-sourcesanspro/sourcesanspro-regular.eot?#iefix)
+      format("embedded-opentype"),
+    url(./font-sourcesanspro/sourcesanspro-regular.woff) format("woff"),
+    url(./font-sourcesanspro/sourcesanspro-regular.ttf)
+      format("truetype"),
+    url(./font-sourcesanspro/sourcesanspro-regular.svg) format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
