@@ -2,6 +2,7 @@ import React from "react";
 import { observer } from 'mobx-react';
 import TemperatureChart from '../Components/TemperatureChart';
 import WindChart from '../Components/WindChart';
+import OverallChart from '../Components/OverallStatChart';
 import { normCoords } from '../utils/normilizeCoordinates';
 
 @observer
@@ -50,6 +51,7 @@ class WeatherPresenter extends React.Component {
         <input type="text" placeholder="Enter a city" ref={this.input} onChange={this.handleChange} onKeyDown={this.handleKey} />
         <TemperatureChart min={weatherStore.minTemperatures} max={weatherStore.maxTemperatures} city={weatherStore.city} country={weatherStore.country} />
         <WindChart winds={weatherStore.winds} city={weatherStore.city} country={weatherStore.country} />
+        <OverallChart overalls={weatherStore.overalls} city={weatherStore.city} country={weatherStore.country} />
       </main>
     );
   }

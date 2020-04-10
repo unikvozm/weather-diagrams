@@ -18,6 +18,7 @@ export default class WeatherModel {
   @observable country = "";
   @observable city = "";
   @observable newPlace = "";
+  @observable overalls = [];
 
   @action async getWeather() {
     const queries = {
@@ -42,8 +43,9 @@ export default class WeatherModel {
         );
       });
       this.getMaxTemperatures();
-	  this.getMinTemperatures();
+      this.getMinTemperatures();
 	  this.getWinds();
+	  this.getOverallStat();
     }
   }
 
@@ -62,8 +64,19 @@ export default class WeatherModel {
   @action getWinds() {
     this.winds = this.weatherInfo.map((day, index) => {
       return { x: index, y: day.windSpeed };
-	});
-	console.log(this.winds);
+    });
+  }
+
+  @action getOverallStat() {
+    const overalls = {};
+    this.weatherInfo.forEach((day) => {
+      if (overalls[day.overall]) {
+        overalls[day.overall] += 1;
+      } else overalls[day.overall] = 1;
+    });
+    this.overalls = Object.keys(overalls).map((key) => {
+      return { y: overalls[key] * 100 / 8, label: key };
+    });
   }
 
   @action async getLocationByCoords() {
