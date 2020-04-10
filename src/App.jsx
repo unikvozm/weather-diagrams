@@ -4,6 +4,7 @@ import "./App.css";
 import { inject, observer } from "mobx-react";
 import ThemePresenter from "./Presenters/ThemePresenter";
 import Header from './Components/Header/Header';
+import Footer from "./Components/Footer";
 
 @inject('weatherStore', 'themeStore')
 @observer
@@ -14,6 +15,7 @@ class App extends React.Component {
       <ThemePresenter>
         <Header weatherStore={weatherStore} theme={themeStore} />
         <WeatherPresenter weatherStore={weatherStore} theme={themeStore} />
+        <Footer/>
       </ThemePresenter>
     );
   }
