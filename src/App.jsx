@@ -1,6 +1,5 @@
 import React from "react";
 import WeatherPresenter from "./Presenters/WeatherPresenter/WeatherPresenter";
-import "./App.css";
 import { inject, observer } from "mobx-react";
 import ThemePresenter from "./Presenters/ThemePresenter";
 import Header from './Components/Header/Header';
